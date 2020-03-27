@@ -1,0 +1,165 @@
+<div class="card-container">
+    <div class="col-12">
+        <h1>Cliente</h1>
+    </div>
+    <hr>
+
+    <div class="row">
+        <div class="form-group row">
+            <div class="col-sm-6 col-md-6">
+                <label class="col-form-label">Tipo de Documento</label>
+                <div>
+                    <input class="form-control input-modified" type="text" name="name" #name="ngModel" [(ngModel)]="usuarioModel.name">
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-6">
+                <label class="col-form-label">Numero de Documento</label>
+                <div>
+                    <input class="form-control input-modified" type="text" name="document_number" #document_number="ngModel" [(ngModel)]="usuarioModel.document_number">
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-6">
+                <label class="col-form-label">Tipo Cliente</label>
+                <div>
+                    <select class="form-control" name="type" #type="ngModel" [(ngModel)]="usuarioModel.type">
+                        <option value="cliente">Cliente</option>
+                        <option value="prospecto">Prospecto</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-6">
+                <label class="col-form-label">Contacto</label>
+                <div>
+                    <input class="form-control input-modified" type="text" name="contact_name" #contact_name="ngModel" [(ngModel)]="usuarioModel.contact_name">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    <button class="btn btn-primary" (click)="create()">Guardar</button>
+    <button class="btn btn-success" (click)="update()">Actualizar</button>
+    <button type="button" class="btn btn-warning" (click)="clear()">Limpiar</button>
+</div>
+<hr>
+<br>
+<div class="conatiner-fluid container-modified">
+    <div class="row">
+        <div class="col-12 float-left d-inline-block">
+            <table class="table table-striped table-bordered table-hover m-auto" id="table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>nombre</th>
+                        <th>Documento</th>
+                        <th>Tipo</th>
+                        <th>Contacto</th>
+                        <th>Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr  *ngFor="let row of listUsuario; index as i">
+                        <td>{{i+1}}</td>
+                        <td>{{row.name}}</td>
+                        <td>{{row.document_number}}</td>
+                        <td>{{row.type}}</td>
+                        <td>{{row.contact_name}}</td>
+                        <td>
+                            <button type="button" class="btn btn-primary" (click)="edit(row)">Editar</button>
+                            <button type="button" class="btn btn-danger" (click)="delete(row)">Borrar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<br>
+<hr>
+<div class="card-container">
+    <div class="col-12">
+        <h1>Agentes</h1>
+    </div>
+    <hr>
+
+    <div class="row">
+        <div class="form-group row">
+            <div class="col-sm-6 col-md-6">
+                <label class="col-form-label">Tipo de Documento</label>
+                <div>
+                    <select class="form-control" name="document_type" #document_type="ngModel" [(ngModel)]="agentModel.document_type">
+                        <option value="Cedula">Cedula</option>
+                        <option value="Pasaporte">Pasaporte</option>
+                        <option value="NIT">NIT</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-6">
+                <label class="col-form-label">Numero de Documento</label>
+                <div>
+                    <input class="form-control input-modified" type="text" name="document_number" #document_number="ngModel" [(ngModel)]="agentModel.document_number">
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-6">
+                <label class="col-form-label">Nombre</label>
+                <div>
+                    <input class="form-control input-modified" type="text" name="firstname" #firstname="ngModel" [(ngModel)]="agentModel.firstname">
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-6">
+                <label class="col-form-label">Apellido</label>
+                <div>
+                    <input class="form-control input-modified" type="text" name="lastname" #lastname="ngModel" [(ngModel)]="agentModel.lastname">
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-6">
+                <label class="col-form-label">Genero</label>
+                <div>
+                    <input class="form-control input-modified" type="text" name="gender" #gender="ngModel" [(ngModel)]="agentModel.gender">
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-6">
+                <label class="col-form-label">Activar Cliente</label>
+                <div>
+                    <select class="form-control" name="is_active" #is_active="ngModel" [(ngModel)]="agentModel.is_active">
+                        <option value="1">Si</option>
+                        <option value="0">No</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    <button class="btn btn-primary" (click)="createAgent()">Guardar</button>
+    <button type="button" class="btn btn-warning" (click)="clearAgent()">Limpiar</button>
+</div>
+<hr>
+<br>
+<div class="conatiner-fluid container-modified">
+    <div class="row">
+        <div class="col-12 float-left d-inline-block">
+            <table class="table table-striped table-bordered table-hover m-auto" id="table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nombre</th>
+                        <th>Documento</th>
+                        <th>Genero</th>
+                        <th>Activo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let row of listAgent; index as i">
+                        <td>{{i+1}}</td>
+                        <td>{{row.fullname}}</td>
+                        <td>{{row.document_number}}</td>
+                        <td>{{row.gender}}</td>
+                        <td *ngIf="row.is_active == 1">Si</td>
+                        <td *ngIf="row.is_active == 0">No</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
